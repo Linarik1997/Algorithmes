@@ -23,19 +23,19 @@ namespace Less2.TestNode
             dls.AddFirst(value);
             return linkedList.Head.Value;
         }
-        public override string Test(NodeTest test)
+        public override string Test()
         {
             try
             {
-                actual = TryAddFirst(test.Count, test.Value);
-                if (actual == test.ExpectedValue)
+                actual = TryAddFirst(Count, Value);
+                if (actual == ExpectedValue)
                     return "Valid";
                 else
                     return "Invalid";
             }
             catch (Exception ex)
             {
-                if (test.ExpectedException != null)
+                if (ExpectedException != null)
                     return "Valid Ex";
                 else
                     return "Invalid Ex";

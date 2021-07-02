@@ -26,19 +26,19 @@ namespace Less2.TestNode
             }
             return dls.GetCount();
         }
-        public override string Test(NodeTest test)
+        public override string Test()
         {
             try
             {
-                actual = TryLinkedListCount(test.Count, test.Pops);
-                if (actual == test.ExpectedCount)
+                actual = TryLinkedListCount(Count, Pops);
+                if (actual == ExpectedCount)
                     return "Valid";
                 else
                     return "Invalid";
             }
             catch(Exception ex)
             {
-                if (test.ExpectedException != null)
+                if (ExpectedException != null)
                     return "Valid Ex";
                 else
                     return "Invalid Ex";

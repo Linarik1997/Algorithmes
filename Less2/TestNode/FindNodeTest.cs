@@ -25,19 +25,19 @@ namespace Less2.TestNode
                 return node.Value;
             else return -1;
         }
-        public override string Test(NodeTest test)
+        public override string Test()
         {
             try
             {
-                actual = TryFindNodeTest(test.Count, test.Value);
-                if (actual == test.ExpectedValue)
+                actual = TryFindNodeTest(Count, Value);
+                if (actual == ExpectedValue)
                     return "Valid";
                 else
                     return "Invalid";
             }
             catch (Exception ex)
             {
-                if (test.ExpectedException != null)
+                if (ExpectedException != null)
                     return "Valid Ex";
                 else
                     return "Invalid Ex";

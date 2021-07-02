@@ -37,10 +37,10 @@ namespace Less2.TestNode
         public Exception ExpectedException { get; set; }
         #endregion
         #region Public Methods
-        public abstract string Test(NodeTest test);
+        public abstract string Test();
         static public void ShowResult(NodeTest test)
         {
-            Console.WriteLine("Test Name:" + test.TestName + new string(' ', 3) + "Expected Result: " + test.ExpectedResult + new string(' ', 3) + "Actual Result: " + test.Test(test));
+            Console.WriteLine("Test Name:" + test.TestName + new string(' ', 3) + "Expected Result: " + test.ExpectedResult + new string(' ', 3) + "Actual Result: " + test.Test());
         }
         #endregion
     }

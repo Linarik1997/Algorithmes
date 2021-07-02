@@ -43,19 +43,19 @@ namespace Less2.TestNode
             else
                 return check.Value;
         }
-        public override string Test(NodeTest test)
+        public override string Test()
         {
             try
             {
-                actual = TryRemoveNode(test.Count, test.Index);
-                if (actual == test.ExpectedIndex)
+                actual = TryRemoveNode(Count, Index);
+                if (actual == ExpectedIndex)
                     return "Valid";
                 else
                     return "Invalid";
             }
             catch (Exception ex)
             {
-                if (test.ExpectedException != null)
+                if (ExpectedException != null)
                     return "Valid Ex";
                 else
                     return "Invalid Ex";

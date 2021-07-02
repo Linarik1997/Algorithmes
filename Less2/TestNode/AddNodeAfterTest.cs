@@ -33,19 +33,19 @@ namespace Less2.TestNode
             }
             return node.NextNode.Value;
         }
-        public override string Test(NodeTest test)
+        public override string Test()
         {
             try
             {
-                actual = TryAddNodeAfter(test.Count, test.Index,test.Value);
-                if (actual == test.Value)
+                actual = TryAddNodeAfter(Count, Index,Value);
+                if (actual == Value)
                     return "Valid";
                 else
                     return "Invalid";
             }
             catch (Exception ex)
             {
-                if (test.ExpectedException != null)
+                if (ExpectedException != null)
                     return "Valid Ex";
                 else
                     return "Invalid Ex";
