@@ -1,0 +1,24 @@
+private static int SearchBin(int[] arr, int searchValue)
+        {
+            int min = 0;
+            int max = arr.Length - 1;
+            while (min <= max)
+            {
+                int mid = (min + max) / 2;  //O(log2N)
+                if (searchValue == arr[mid])
+                    return mid;
+                else if(searchValue < arr[mid])
+                {
+                    max = mid - 1;
+                }
+                else
+                {
+                    min = mid + 1;
+                }
+            }
+            return -1;
+        }
+Сложность алгоритма = логарифмическая, так как количество действий в цикле каждый раз уменьшается вдвое.
+То есть с каждым заходом в цикл кол-во действий уменьшается на число: Входные данные делить 
+						на степень двойки в текущем порядке итерации.  
+Ответ:  O(log2N)
