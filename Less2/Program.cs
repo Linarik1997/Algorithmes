@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Less2.TestNode;
+using System;
 using System.Diagnostics;
 using static Less2.TestNode.NodeTest;
 
@@ -7,84 +8,66 @@ namespace Less2
     class Program
     {
         #region TestCases
-        static TestNode.NodeTest countTest = new TestNode.NodeTest()
+        static NodeTest countTest = new CountTest("CountTest")
         {
-            TestName = "Count",
-            TestType = TestNode.TestType.Count,
             ExpectedResult = "Valid",
             Count = 3,
             ExpectedException = null,
             Pops = 0
         };
-        static TestNode.NodeTest countPopTest = new()
+        static NodeTest countPopTest = new CountTest("PopsCountTest")
         {
-            TestName = "PopsCount",
-            TestType = TestNode.TestType.Count,
             ExpectedResult = "Valid",
             Count = 3,
             ExpectedException = null,
             Pops = 2
         };
-        static TestNode.NodeTest addFirst = new()
+        static NodeTest addFirst = new AddFirstTest("AddFirst")
         {
-            TestName = "AddFirst",
-            TestType = TestNode.TestType.AddFirst,
             ExpectedResult = "Valid",
             Count = 5,
             Value = 20,
             ExpectedValue = 20
         };
-        static TestNode.NodeTest addFirstFalse = new()
+        static NodeTest addFirstFalse = new AddFirstTest("AddFirstFalse")
         {
-            TestName = "AddFirst",
-            TestType = TestNode.TestType.AddFirst,
             ExpectedResult = "Invalid",
             Count = 5,
             Value = 20,
             ExpectedValue = 30
         };
-        static TestNode.NodeTest findNode = new()
+        static NodeTest findNode = new FindNodeTest("FindNode")
         {
-            TestName = "FindNode",
-            TestType = TestNode.TestType.FindNode,
             ExpectedResult = "Valid",
             Count = 5,
             Value = 4,
             ExpectedValue = 4
         };
-        static TestNode.NodeTest notfindNode = new()
+        static NodeTest notfindNode = new FindNodeTest("NotfindNode")
         {
-            TestName = "NotfindNode",
-            TestType = TestNode.TestType.FindNode,
             ExpectedResult = "Valid",
             Count = 5,
             Value = 10,
             ExpectedValue = -1
         };
-        static TestNode.NodeTest addNodeAfter = new()
+        static NodeTest addNodeAfter = new AddNodeAfterTest("AddNodeAfter")
         {
-            TestName = "AddNodeAfter",
-            TestType = TestNode.TestType.AddNodeAfter,
             ExpectedResult = "Valid",
             Count = 10,
             Value = 20,
             Index = 5,
             ExpectedValue = 20,
         };
-        static TestNode.NodeTest addNodeAfterLast = new()
+        static NodeTest addNodeAfterLast = new AddNodeAfterTest("AddNodeAfterTail")
         {
-            TestName = "AddNodeAfterTail",
-            TestType = TestNode.TestType.AddNodeAfter,
             ExpectedResult = "Valid",
             Count = 5,
             Value = 20,
             Index = 4,
             ExpectedValue = 20
         };
-        static TestNode.NodeTest addNodeAfterException = new()
+        static NodeTest addNodeAfterException = new AddNodeAfterTest("AddNodeAfterException")
         {
-            TestName = "AddNodeAfterException",
-            TestType = TestNode.TestType.AddNodeAfter,
             ExpectedResult = "Valid Ex",
             Count = 10,
             Value = 30,
@@ -92,55 +75,43 @@ namespace Less2
             ExpectedException = new ArgumentException(),
             ExpectedValue = 20
         };
-        static TestNode.NodeTest removeNode = new()
+        static NodeTest removeNode = new RemoveNodeTest("RemoveNode")
         {
-            TestName = "RemoveNode",
-            TestType = TestNode.TestType.RemoveNode,
             ExpectedResult = "Valid",
             Count = 4,
             Index = 2,
             ExpectedIndex = -1
         };
-        static TestNode.NodeTest removeNodeFalse = new()
+        static NodeTest removeNodeFalse = new RemoveNodeTest("RemoveNodeFalse")
         {
-            TestName = "RemoveNodeFalse",
-            TestType = TestNode.TestType.RemoveNode,
             ExpectedResult = "Invalid",
             Count = 10,
             Index = 8,
             ExpectedIndex = 9
         };
-        static TestNode.NodeTest removeHead = new()
+        static NodeTest removeHead = new RemoveNodeTest("RemoveHead")
         {
-            TestName = "RemoveHead",
-            TestType = TestNode.TestType.RemoveNode,
             ExpectedResult = "Valid",
             Count = 5,
             Index = 0,
             ExpectedIndex = -1
         };
-        static TestNode.NodeTest removeTail = new()
+        static NodeTest removeTail = new RemoveNodeTest("RemoveTail")
         {
-            TestName = "RemoveTail",
-            TestType = TestNode.TestType.RemoveNode,
             ExpectedResult = "Valid",
             Count = 5,
             Index = 4,
             ExpectedIndex = -1
         };
-        static TestNode.NodeTest removeOne = new()
+        static NodeTest removeOne = new RemoveNodeTest("RemoveOne")
         {
-            TestName = "RemoveOne",
-            TestType = TestNode.TestType.RemoveNode,
             ExpectedResult = "Valid",
             Count = 1,
             Index = 0,
             ExpectedIndex = -1
         };
-        static TestNode.NodeTest removeException = new()
+        static NodeTest removeException = new RemoveNodeTest("RemoveException")
         {
-            TestName = "RemoveException",
-            TestType = TestNode.TestType.RemoveNode,
             ExpectedResult = "Valid Ex",
             Count = 10,
             Index = 15,
@@ -149,7 +120,7 @@ namespace Less2
         };
         #endregion
 
-        static public TestNode.NodeTest[] cases = new[] { countTest, countPopTest, addFirst, addFirstFalse, 
+        static public NodeTest[] cases = new[] { countTest, countPopTest, addFirst, addFirstFalse, 
             findNode, notfindNode ,addNodeAfter,addNodeAfterLast,addNodeAfterException, removeNode,removeHead,removeTail,removeOne,
         removeException,removeNodeFalse};
 
@@ -170,8 +141,8 @@ namespace Less2
             //Отображение элементов и отдельно головы и хвоста
             Console.WriteLine(doubleLinkedList.Display()); 
             var dls = (DoubleLinkedList)doubleLinkedList;
-            Console.WriteLine("Head:"+ dls.Head.Value.ToString());
-            Console.WriteLine("Tail:" + dls.Tail.Value.ToString());
+            Console.WriteLine("Count: " + dls.Count + new string(' ', 5) + "Head:" + dls.Head.Value.ToString() 
+                + new string(' ',5) + "Tail:" + dls.Tail.Value.ToString());
             
             doubleLinkedList.RemoveNode(16);//Удаляем 16ый элемент по индексу
             var node = doubleLinkedList.FindNode(0);//находим ноду со значением 0 (первая)
@@ -179,8 +150,8 @@ namespace Less2
 
             //Отображение элементов и отдельно головы и хвоста
             Console.WriteLine(doubleLinkedList.Display());
-            Console.WriteLine("Head:" + dls.Head.Value.ToString());
-            Console.WriteLine("Tail:" + dls.Tail.Value.ToString());
+            Console.WriteLine("Count: " + dls.Count + new string(' ', 5) + "Head:" + dls.Head.Value.ToString()
+                + new string(' ', 5) + "Tail:" + dls.Tail.Value.ToString());
 
 
             //Сортировка массива + бинарный поиск
@@ -197,7 +168,7 @@ namespace Less2
                 }
                 var index = BinarySearch.ArrayBinarySearch(rndArray, rnd.Next(0, 10000));
                 sw.Stop();
-                Console.WriteLine($"Iteration:{t}; Time Ellapsed:{sw.ElapsedMilliseconds} ; Found Index:{index}");
+                Console.WriteLine($"Iteration:{t+1}; Time Ellapsed:{sw.ElapsedMilliseconds} ; Found Index:{index}");
             }
             //бинарный поиск в отсортированном массиве
             Console.WriteLine("бинарный поиск в отсортированном массиве:");
@@ -213,7 +184,7 @@ namespace Less2
                 }
                 var index = BinarySearch.ArrayBinarySearch(sortedArr, rnd.Next(0, 10000));
                 sw.Stop();
-                Console.WriteLine($"Iteration:{t}; Time Ellapsed:{sw.ElapsedMilliseconds} ; Found Index:{index}");
+                Console.WriteLine($"Iteration:{t+1}; Time Ellapsed:{sw.ElapsedMilliseconds} ; Found Index:{index}");
             }
         }
     }
