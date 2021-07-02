@@ -18,7 +18,7 @@ namespace Less2
         /// </summary>
         public int Value { get; set; }
         /// <summary>
-        /// Статическое количество
+        /// Ссылка на следующую ноду
         /// </summary>
         public Node NextNode { get; set; }
         /// <summary>
@@ -32,10 +32,10 @@ namespace Less2
     {
 
         #region Fileds
-        public int Count { get; set; }
         /// <summary>
-        /// Ссылка на следующую ноду
+        /// Количество элементов в списке
         /// </summary>
+        public int Count { get; set; }
         /// <summary>
         /// Головной элемент
         /// </summary>
@@ -222,6 +222,17 @@ namespace Less2
             {
                 sb.Append(current.Value.ToString() + " ");
                 current = current.NextNode;
+            }
+            return sb.ToString();
+        }
+        string ITwoWayLinkedList.ReverseDisplay()
+        {
+            var current = Tail;
+            StringBuilder sb = new StringBuilder();
+            while (current != null)
+            {
+                sb.Append(current.Value.ToString() + " ");
+                current = current.PrevNode;
             }
             return sb.ToString();
         }

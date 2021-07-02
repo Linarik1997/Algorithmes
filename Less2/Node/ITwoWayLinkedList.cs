@@ -17,6 +17,7 @@ namespace Less2
 
         void RemoveNode(Node node); // удаляет указанный элемент
         Node FindNode(int searchValue); // ищет элемент по его значению
-        string Display(); //отображение в консоли
+        string Display(); //отображение списка в порядке
+        string ReverseDisplay();//отображение списка в обратном порядке
     }
 }

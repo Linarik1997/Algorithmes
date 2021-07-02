@@ -153,6 +153,11 @@ namespace Less2
             Console.WriteLine("Count: " + dls.Count + new string(' ', 5) + "Head:" + dls.Head.Value.ToString()
                 + new string(' ', 5) + "Tail:" + dls.Tail.Value.ToString());
 
+            //Отображение элементов в обратном порядке
+            Console.WriteLine(doubleLinkedList.ReverseDisplay());
+            Console.WriteLine("Count: " + dls.Count + new string(' ', 5) + "Head:" + dls.Head.Value.ToString()
+    + new string(' ', 5) + "Tail:" + dls.Tail.Value.ToString());
+
 
             //Сортировка массива + бинарный поиск
             Console.WriteLine("Сортировка массива + бинарный поиск:");
