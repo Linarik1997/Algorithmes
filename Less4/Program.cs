@@ -32,24 +32,27 @@ namespace Less4
 
         static void Main(string[] args)
         {
+            //Демонстрация дерева
             BinaryTree<int> bt = new(100);
-            bt.AddItem(50);
-            bt.AddItem(20);
-            bt.AddItem(70);
-            bt.AddItem(150);
-            bt.AddItem(200);
-            bt.AddItem(10);
-            bt.AddItem(170);
-            bt.AddItem(60);
-            bt.AddItem(250);
-            bt.AddItem(400);
-            bt.AddItem(100);
-            bt.AddItem(50);
-            bt.AddItem(25);
+            bt.AddItem(99);
+            bt.AddItem(102);
+            bt.AddItem(101);
+            bt.AddItem(120);
+            bt.AddItem(115);
+            Console.WriteLine("Изначальное дерево");
             bt.PrintTree();
-
+            bt.RemoveItem(102);
+            Console.WriteLine("Удаление узла 102");
+            bt.PrintTree();
+            Console.WriteLine("Удаление узла 100");
+            bt.RemoveItem(100);
+            bt.PrintTree();
+            Console.WriteLine($"Root.Value: {bt.GetRoot().Value}");
+            var node = bt.GetNodeByValue(99);
+            Console.WriteLine("GetNodeByValue(99).Value: {0}",node?.Value);
 
             return;
+            //Сравнение массива и хэшсета
             char[] alhabet = Enumerable.Range('A', 'z' - 'A' + 1).Select(i => (char)i).Where(i => i < '[' ^ i > '`').ToArray();
             HashTest hashTest = new(alhabet);
             hashTest.FillHashSet(10, 1_000_000);
@@ -63,7 +66,6 @@ namespace Less4
             Find HST = hashTest.hashSet.Contains;
             Console.WriteLine($"Поиск в несортированном массиве строк:{Test(AT, s)} мс");
             Console.WriteLine($"Поиск в HashSet<String>:{Test(HST, s)} мс");
-
         }
     }
 }

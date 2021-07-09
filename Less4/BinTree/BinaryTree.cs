@@ -15,6 +15,26 @@ namespace Less4.BinTree
             RootNode = root;
         }
         private TreeNode<T> RootNode { get; set; }
+        public TreeNode<T> Minimum
+        {
+            get { return Min(RootNode); }
+        }
+        public TreeNode<T> Maximum
+        {
+            get { return Max(RootNode); }
+        }
+        private TreeNode<T> Min(TreeNode<T> root)
+        {
+            if (root.LeftChild == null)
+                return root;
+            return Min(root.LeftChild);
+        }
+        private TreeNode<T> Max (TreeNode<T> root)
+        {
+            if (root.RightChild == null)
+                return root;
+            return Max(root.RightChild);
+        }
         private TreeNode<T> Search(TreeNode<T> Root, T Value)
         {
             if (Root == null || Value.Equals(Root.Value))
@@ -78,9 +98,33 @@ namespace Less4.BinTree
         }
         public void RemoveItem(T Value)
         {
-            throw new NotImplementedException();
+            RemoveItem(RootNode, Value);
+            return;
         }
-
+        private TreeNode<T> RemoveItem(TreeNode<T> root, T Value)
+        {
+            if (root == null)
+                return root;
+            if (Value.CompareTo(root.Value) < 0)
+                root.LeftChild = RemoveItem(root.LeftChild, Value);
+            else if (Value.CompareTo(root.Value) > 0)
+                root.RightChild = RemoveItem(root.RightChild, Value);
+            else if(root.RightChild!=null && root.LeftChild != null)
+            {
+                root.Value = Min(root.RightChild).Value;
+                root.RightChild = RemoveItem(root.RightChild, root.Value);
+            }
+            else
+            {
+                if (root.LeftChild != null)
+                    root = root.LeftChild;
+                else if (root.RightChild != null)
+                    root = root.RightChild;
+                else
+                    root = null;
+            }
+            return root;
+        }
         public void PrintTree()
         {
             RootNode.PrintTree("", NodePosition.Center, true, false);

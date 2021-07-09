@@ -12,7 +12,6 @@ namespace Less4.BinTree
         Right,
         Center
     }
-
     public class TreeNode<T>:IComparable<T> where T : IComparable<T>
     {
 
@@ -27,8 +26,7 @@ namespace Less4.BinTree
             LeftChild = null;
             RightChild = null;
         }
-
-        public T Value { get; set; }
+        public T Value{ get; set; }
         public TreeNode<T> LeftChild { get; set; }
         public TreeNode<T> RightChild { get; set; }
         public TreeNode<T> Parent { get; set; }
