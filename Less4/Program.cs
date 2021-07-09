@@ -51,7 +51,6 @@ namespace Less4
             var node = bt.GetNodeByValue(99);
             Console.WriteLine("GetNodeByValue(99).Value: {0}",node?.Value);
 
-            return;
             //Сравнение массива и хэшсета
             char[] alhabet = Enumerable.Range('A', 'z' - 'A' + 1).Select(i => (char)i).Where(i => i < '[' ^ i > '`').ToArray();
             HashTest hashTest = new(alhabet);
