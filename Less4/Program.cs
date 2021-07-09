@@ -40,7 +40,13 @@ namespace Less4
             bt.AddItem(200);
             bt.AddItem(10);
             bt.AddItem(170);
-            bt.PrintTree(TreeNode<int>.TraversalOrder.inorder) ;
+            bt.AddItem(60);
+            bt.AddItem(250);
+            bt.AddItem(400);
+            bt.AddItem(100);
+            bt.AddItem(50);
+            bt.AddItem(25);
+            bt.PrintTree();
 
 
             return;

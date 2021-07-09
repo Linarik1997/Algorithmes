@@ -63,7 +63,7 @@ namespace Less4.BinTree
                         return;
                     }
                 }
-                else throw new FormatException();
+                else return;
             }
         }
 
@@ -76,42 +76,14 @@ namespace Less4.BinTree
         {
             return RootNode;
         }
-
-        public void PrintTree(TreeNode<T>.TraversalOrder type, TreeNode<T> root, string indent = "")
-        {
-            if (root == null)
-                return;
-            switch (type)
-            {
-
-                case TreeNode<T>.TraversalOrder.inorder:
-                    PrintTree(TreeNode<T>.TraversalOrder.preorder, root.RightChild, $"{indent}{new string(' ', 2)}");
-                    Console.WriteLine($"{indent}{root.Value}");
-                    PrintTree(TreeNode<T>.TraversalOrder.preorder, root.LeftChild, $"{indent}{new string(' ', 2)}");
-                    return;
-                case TreeNode<T>.TraversalOrder.preorder:
-                    Console.WriteLine($"{indent}{root.Value}");
-                    PrintTree(TreeNode<T>.TraversalOrder.preorder, root.LeftChild, $"{indent}{new string(' ', 2)}");
-                    PrintTree(TreeNode<T>.TraversalOrder.preorder, root.RightChild, $"{indent}{new string(' ', 2)}");
-                    break;
-                case TreeNode<T>.TraversalOrder.postorder:
-                    PrintTree(TreeNode<T>.TraversalOrder.preorder, root.LeftChild, $"{indent}{new string(' ', 2)}");
-                    PrintTree(TreeNode<T>.TraversalOrder.preorder, root.RightChild, $"{indent}{new string(' ', 2)}");
-                    Console.WriteLine($"{indent}{root.Value}");
-                    return;
-                default:
-                    return;
-            }
-        }
-
         public void RemoveItem(T Value)
         {
             throw new NotImplementedException();
         }
 
-        public void PrintTree(TreeNode<T>.TraversalOrder type)
+        public void PrintTree()
         {
-            PrintTree(type, RootNode,"");
+            RootNode.PrintTree("", NodePosition.Center, true, false);
         }
     }
 }

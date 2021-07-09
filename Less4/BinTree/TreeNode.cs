@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Less4.BinTree
 {
+    public enum NodePosition
+    {
+        Left,
+        Right,
+        Center
+    }
+
     public class TreeNode<T>:IComparable<T> where T : IComparable<T>
     {
-        public enum TraversalOrder
-        {
-            inorder,
-            preorder,
-            postorder
-        }
 
         public TreeNode(T value)
         {
@@ -31,6 +32,66 @@ namespace Less4.BinTree
         public TreeNode<T> LeftChild { get; set; }
         public TreeNode<T> RightChild { get; set; }
         public TreeNode<T> Parent { get; set; }
+        public void PrintTree(string indent, NodePosition nodePosition, bool last, bool empty)
+        {
+            Console.Write(indent);
+            if (last)
+            {
+                Console.Write("└─");
+                indent += "  ";
+            }
+            else
+            {
+                Console.Write("├─");
+                indent += "| ";
+            }
+            var stringValue = empty ? "-" : Value.ToString();
+            PrintValue(stringValue, nodePosition);
+
+            if (!empty && (this.LeftChild!=null || this.RightChild != null))
+            {
+                if (this.LeftChild != null)
+                    this.LeftChild.PrintTree(indent, NodePosition.Left, false, false);
+                else PrintTree(indent, NodePosition.Left, false, true);
+                if (this.RightChild != null)
+                    this.RightChild.PrintTree(indent, NodePosition.Right, true, false);
+                else PrintTree(indent, NodePosition.Right, true, true);
+            }
+
+        }
+        private void PrintLeftValue(string value)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.Write("L:");
+            Console.ForegroundColor = (value == "-") ? ConsoleColor.Red : ConsoleColor.Gray;
+            Console.WriteLine(value);
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+        private void PrintRightValue(string value)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("R:");
+            Console.ForegroundColor = (value == "-") ? ConsoleColor.Red : ConsoleColor.Gray;
+            Console.WriteLine(value);
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+        private void PrintValue(string value, NodePosition nodePostion)
+        {
+            switch (nodePostion)
+            {
+                case NodePosition.Left:
+                    PrintLeftValue(value);
+                    break;
+                case NodePosition.Right:
+                    PrintRightValue(value);
+                    break;
+                case NodePosition.Center:
+                    Console.WriteLine(value);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
 
         public int CompareTo(object other)
         {
