@@ -1,4 +1,5 @@
-﻿using Less4.Task1;
+﻿using Less4.BinTree;
+using Less4.Task1;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -31,6 +32,18 @@ namespace Less4
 
         static void Main(string[] args)
         {
+            BinaryTree<int> bt = new(100);
+            bt.AddItem(50);
+            bt.AddItem(20);
+            bt.AddItem(70);
+            bt.AddItem(150);
+            bt.AddItem(200);
+            bt.AddItem(10);
+            bt.AddItem(170);
+            bt.PrintTree(TreeNode<int>.TraversalOrder.inorder) ;
+
+
+            return;
             char[] alhabet = Enumerable.Range('A', 'z' - 'A' + 1).Select(i => (char)i).Where(i => i < '[' ^ i > '`').ToArray();
             HashTest hashTest = new(alhabet);
             hashTest.FillHashSet(10, 1_000_000);

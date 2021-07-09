@@ -8,10 +8,23 @@ namespace Less4.BinTree
 {
     public class TreeNode<T>:IComparable<T> where T : IComparable<T>
     {
+        public enum TraversalOrder
+        {
+            inorder,
+            preorder,
+            postorder
+        }
 
         public TreeNode(T value)
         {
             Value = value;
+        }
+        public TreeNode(T value, TreeNode<T> parent)
+        {
+            Value = value;
+            Parent = parent;
+            LeftChild = null;
+            RightChild = null;
         }
 
         public T Value { get; set; }
@@ -19,13 +32,13 @@ namespace Less4.BinTree
         public TreeNode<T> RightChild { get; set; }
         public TreeNode<T> Parent { get; set; }
 
-        //public int CompareTo(object other)
-        //{
-        //    if (other == null)
-        //        return 1;
-        //    var node = other as TreeNode<T>;
-        //    return this.Value.CompareTo(node.Value);
-        //}
+        public int CompareTo(object other)
+        {
+            if (other == null)
+                return 1;
+            var node = other as TreeNode<T>;
+            return this.Value.CompareTo(node.Value);
+        }
         public static bool operator > (TreeNode<T> operand1, TreeNode<T> operand2)
         {
             return operand1.CompareTo(operand2) > 0;
@@ -59,8 +72,7 @@ namespace Less4.BinTree
         {
             if (other == null)
                 return 1;
-            var node = other as TreeNode<T>;
-            return this.Value.CompareTo(node.Value);
+            return this.Value.CompareTo(other);
         }
     }
 }

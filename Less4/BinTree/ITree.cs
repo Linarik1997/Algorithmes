@@ -12,6 +12,6 @@ namespace Less4.BinTree
         void AddItem(T Value); //Добавить узел
         void RemoveItem(T Value); //Убрать Узел
         TreeNode<T> GetNodeByValue(T Value);//Получить узел дерева по значению
-        void PrintTree();//Вывсти дерево в консоль
+        void PrintTree(TreeNode<T>.TraversalOrder type);//Вывсти дерево в консоль
     }
 }
