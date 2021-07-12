@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Less5</name>
+    </assembly>
+    <members>
+        <member name="M:Less5.Program.BFS(Less4.BinTree.BinaryTree{System.Int32},System.Int32)">
+            <summary>
+            Статичский метод обходу в ширину в бинарном древе поиска с типом данных int, реализованном в Less4.BinTree
+            </summary>
+            <param name="bt">Ссылка на экземпляр бинарного древа поиска с типом данных int</param>
+            <param name="searchValue">int значение поиска узла в бинарном древе поиска</param>
+            <returns>Ссылку на узел в древе при обнаружении узла с searchValue, null при не обнаружении узла</returns>
+        </member>
+        <member name="M:Less5.Program.DFS(Less4.BinTree.BinaryTree{System.Int32},System.Int32)">
+            <summary>
+            Статичский метод обхода в глубину в бинарном древе поиска с типом данных int, реализованном в Less4.BinTree
+            </summary>
+            <param name="bt">Ссылка на экземпляр бинарного древа поиска с типом данных int</param>
+            <param name="searchValue">int значение поиска узла в бинарном древе поиска</param>
+            <returns>Ссылку на узел в древе при обнаружении узла с searchValue, null при не обнаружении узла</returns>
+        </member>
+    </members>
+</doc>

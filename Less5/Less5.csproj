@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <Win32Resource />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\l.khamitov\Desktop\Linar\Studies\Algo\Less5\Less5.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Less4">
+      <HintPath>..\Less4\bin\Release\net5.0\Less4.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
